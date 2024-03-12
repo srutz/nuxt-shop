@@ -19,16 +19,15 @@ const route = useRoute()
 
 const idS = route.params.id
 const id = Number.parseInt(idS.toString())
-console.log("id=" + id + ": " + id.constructor.name)
 
-const product = ref<Product>()
+const product = computed(() => { return data.value as Product})
 const currentImage = ref(0)
 
-onMounted(async () => {
-    const response = await fetch("https://dummyjson.com/products/" + id)
-    const data = await response.json() as Product
-    product.value = data    
-})
+const { data, pending, error, refresh } = await useFetch("https://dummyjson.com/products/" + id, { })
 
+watchEffect(() => {
+    const raw = toRaw(toValue(data))
+    console.dir(raw)
+})
 
 </script>
