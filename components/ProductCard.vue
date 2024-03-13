@@ -3,16 +3,16 @@
 <template>
 
 <div class="w-80 border rounded overflow-hidden shadow-lg grow flex flex-col mb-8 cursor-pointer hover:bg-gray-100">
-    <router-link :to="`/product/${product.id}`" class="grow">
+    <NuxtLink :to="`/product/${product.id}`" class="grow">
         <div class="flex justify-center">
-            <img class="w-full" style="width: auto; height: 120px;" :src="product.thumbnail" :alt="product.title">
+            <img class="w-full" style="width: auto; height: 120px;" :src="product.thumbnail" :alt="product.title" />
         </div>
         <div class="px-6 py-4 grow">
             <div class="font-bold text-xl mb-2">{{ product.title }}</div>
             <p class="text-gray-700 text-base min-h-32">{{ product.description }}
             </p>
         </div>
-    </router-link>
+    </NuxtLink>
     <div class="px-6 pt-4 pb-2">
         <button @click="onBuy">
         Buy Now
